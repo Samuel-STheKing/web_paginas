@@ -1,0 +1,749 @@
+/* --- Variables de Paleta de Colores (Clara e Institucional) --- */
+:root {
+    --color-bg-light: #ffffff;
+    --color-bg-alt: #f8fafc;
+    --color-card-bg: #ffffff;
+    
+    --color-text-main: #0f172a;
+    --color-text-muted: #0e0e0e;
+    
+    /* Colores extraídos del Escudo e Institucionales */
+    --color-brand-red: #d91d24;
+    --color-brand-green: #0d7e3e;
+    --color-border: #e2e8f0;
+    
+    /* Variables para el Formulario en Contraste Azul */
+    --color-bg-blue-glass: rgba(255, 255, 255, 0.12);
+    --color-border-blue-glass: rgba(223, 242, 227, 0.25);
+    --color-blue-focus: #20ef2a;
+    
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Reseteo General --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg-light);
+    color: var(--color-text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- Header / Navegación (Adaptado con Efecto Glassmorphism) --- */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+    z-index: 1000;
+    transition: var(--transition-smooth);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.85rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.site-logo {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.site-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+}
+
+/* Estructura del Menú Adaptada de Uiverse.io */
+.menu {
+    width: auto;
+    max-width: 520px;
+    backdrop-filter: blur(12px) saturate(180%) contrast(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%) contrast(120%);
+    background: rgba(13, 126, 62, 0.08);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    padding: 6px;
+    border-radius: 99rem;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    position: relative;
+    z-index: 50;
+}
+
+.menu::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow:
+        inset 1px 1px 3px rgba(255, 255, 255, 0.5),
+        inset -1px -1px 3px rgba(0, 0, 0, 0.02);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.menu .nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 90px;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 999rem;
+    -webkit-tap-highlight-color: transparent;
+    transition: var(--transition-smooth);
+}
+
+.menu .nav-link span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.menu .nav-link:hover {
+    background-color: rgba(13, 126, 62, 0.12);
+    box-shadow:
+        inset 1px 1px 2px rgba(255, 255, 255, 0.4),
+        inset -1px -1px 2px rgba(0, 0, 0, 0.01);
+    transform: translateY(-1px);
+    color: var(--color-brand-green);
+}
+
+.menu .nav-link.active {
+    background: var(--color-brand-green);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(13, 126, 62, 0.2);
+}
+
+.menu .nav-link:active {
+    transform: scale(0.95);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    min-height: 95vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 2rem 0;
+    background: radial-gradient(circle at top, rgba(13, 126, 62, 0.03) 0%, var(--color-bg-light) 70%);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    width: 100%;
+}
+
+.hero-text-side {
+    flex: 1;
+    text-align: left;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background-color: rgba(13, 126, 62, 0.08);
+    color: var(--color-brand-green);
+    border: 1px solid rgba(13, 126, 62, 0.15);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.hero-text-side h1 {
+    font-size: clamp(2.3rem, 4vw, 3.5rem);
+    font-weight: 800;
+    color: var(--color-text-main);
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+}
+
+.hero-image-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-main-img {
+    width: 100%;
+    max-width: 520px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    border: 1px solid var(--color-border);
+    background-color: #f1f5f9;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 0.85rem 2.2rem;
+    background-color: var(--color-brand-red);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 12px rgba(217, 29, 36, 0.15);
+}
+
+.btn-primary:hover {
+    background-color: #b3141a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(217, 29, 36, 0.25);
+}
+
+/* --- NUEVA SECCIÓN: Nuestra Escuela (Estilos Collage Grid) --- */
+.escuela-section {
+    background-color: var(--color-bg-light);
+    padding: 6rem 2rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.escuela-collage-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-auto-rows: 200px;
+    grid-gap: 1.5rem;
+    grid-auto-flow: dense; /* Rellena huecos de forma inteligente */
+}
+
+/* Estilos de la Tarjeta del Collage */
+.collage-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+    background-color: var(--color-bg-alt);
+    transition: var(--transition-smooth);
+}
+
+.collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+/* Modificadores de Tamaño para generar asimetría */
+.collage-item.item-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.collage-item.item-vertical {
+    grid-row: span 2;
+}
+
+.collage-item.item-horizontal {
+    grid-column: span 2;
+}
+
+/* Capa Oscura Interactiva (Hover Efecto) */
+.collage-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 0.1) 80%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: var(--transition-smooth);
+}
+
+.collage-overlay span {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transform: translateY(10px);
+    transition: var(--transition-smooth);
+}
+
+/* Hovers del Collage */
+.collage-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-brand-green);
+}
+
+.collage-item:hover img {
+    transform: scale(1.05);
+}
+
+.collage-item:hover .collage-overlay {
+    opacity: 1;
+}
+
+.collage-item:hover .collage-overlay span {
+    transform: translateY(0);
+}
+
+/* --- Menciones Section --- */
+.menciones-section {
+    background-color: var(--color-bg-alt);
+    padding: 6rem 2rem;
+}
+
+.section-title-container {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-tagline {
+    color: var(--color-brand-green);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-top: 0.5rem;
+}
+
+.title-line {
+    width: 50px;
+    height: 3px;
+    background-color: var(--color-brand-red);
+    margin: 0.75rem auto 0;
+    border-radius: 2px;
+}
+
+.list-menciones {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+    gap: 2.8rem;
+    justify-content: center;
+}
+
+.card-horizontal {
+    box-sizing: border-box;
+    display: flex;
+    background: rgba(255, 255, 255, 0.48);
+    border: 1px solid white;
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 17px;
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+    height: 100%;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.card-horizontal:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.card-horizontal:hover {
+    border: 1px solid var(--color-brand-red);
+    transform: scale(1.03) translateY(-2px);
+}
+
+.card-horizontal:active {
+    transform: scale(0.98) rotateZ(1deg);
+}
+
+.card-image-area {
+    width: 40%;
+    min-width: 220px;
+    position: relative;
+    background-color: rgba(226, 232, 240, 0.4);
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.card-horizontal:hover .card-img {
+    transform: scale(1.04);
+}
+
+.card-floating-icon {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.35rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.card-horizontal:nth-child(even) .card-floating-icon {
+    right: auto;
+    left: 16px;
+}
+
+.card-content-area {
+    flex: 1;
+    padding: 2.6rem 2.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.card-content-area h3 {
+    font-size: 1.45rem;
+    margin-bottom: 0.7rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+}
+
+.card-content-area p {
+    color: var(--color-text-muted);
+    font-size: 0.98rem;
+    line-height: 1.65;
+}
+
+/* --- Sección de Contacto (Contraste Azul Translúcido) --- */
+.contacto-section {
+    background-color: var(--color-bg-alt);
+    padding: 6rem 2rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.contacto-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--color-bg-blue-glass); 
+    border: 1px solid var(--color-border-blue-glass); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 20px 40px rgba(13, 253, 69, 0.15), 12px 17px 51px rgba(0, 0, 0, 0.08);
+    padding: 3rem;
+    border-radius: 17px;
+    transition: var(--transition-smooth);
+}
+
+.contacto-container:hover {
+    border-color: rgba(13, 253, 81, 0.4);
+    box-shadow: 0 22px 45px rgba(37, 253, 13, 0.22), 12px 17px 51px rgba(0, 0, 0, 0.08);
+}
+
+.contacto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    background-color: rgba(255, 255, 255, 0.7); 
+    border: 1px solid rgba(233, 12, 12, 0.2);
+    border-radius: 8px;
+    transition: var(--transition-smooth);
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--color-blue-focus);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.15);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.btn-submit {
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+.form-status {
+    font-size: 0.95rem;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    display: none;
+}
+
+.form-status.success {
+    display: block;
+    color: var(--color-brand-green);
+}
+
+.form-status.error {
+    display: block;
+    color: var(--color-brand-red);
+}
+
+/* --- Footer (Estrecho y Estilizado) --- */
+.main-footer {
+    background-color: var(--color-bg-light);
+    border-top: 1px solid var(--color-border);
+    padding: 2rem 2rem 1.5rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-info h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+    color: var(--color-brand-green);
+    font-weight: 700;
+    text-align: center;
+}
+
+.director-name {
+    color: var(--color-text-main);
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.location-text {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--color-border);
+    color: #94a3b8;
+    font-size: 0.82rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2.5rem;
+    }
+    .hero-text-side {
+        text-align: center;
+    }
+    .hero-main-img {
+        height: 280px;
+    }
+    
+    .list-menciones {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .card-horizontal,
+    .card-horizontal:nth-child(even) {
+        flex-direction: column; 
+    }
+    .card-image-area {
+        width: 100%;
+        height: 220px;
+    }
+    .card-horizontal:nth-child(even) .card-floating-icon {
+        left: auto;
+        right: 16px;
+    }
+    .card-content-area {
+        padding: 2rem 1.8rem;
+    }
+    
+    /* El collage pasa a ser lineal y ordenado en tablets y móviles */
+    .escuela-collage-container {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 180px;
+    }
+    .collage-item.item-large, 
+    .collage-item.item-horizontal {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-container {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    .nav-menu {
+        gap: 1.25rem;
+    }
+    .contacto-container {
+        padding: 2rem 1.25rem;
+    }
+    .escuela-collage-container {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 220px;
+    }
+    .collage-item.item-large, 
+    .collage-item.item-horizontal {
+        grid-column: span 1;
+    }
+}
+
+/* --- Botón Globo Flotante (Instagram) --- */
+.globo-flotante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+}
+
+.btn-flotante {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    border-radius: 50%;
+    box-shadow: 0 8px 24px rgba(214, 36, 159, 0.35);
+    transition: var(--transition-smooth);
+}
+
+.icon-instagram {
+    width: 28px;
+    height: 28px;
+    fill: #ffffff;
+    transition: var(--transition-smooth);
+}
+
+.btn-flotante:hover {
+    transform: scale(1.1) translateY(-4px);
+    box-shadow: 0 12px 28px rgba(214, 36, 159, 0.5);
+}
+
+.btn-flotante:hover .icon-instagram {
+    transform: rotate(8deg);
+}
+
+.btn-flotante:active {
+    transform: scale(0.95);
+}
+
+/* ====================== LOGO FLOTANTE BRAND ====================== */
+.logo-flotante-brand {
+    position: fixed;
+    top: 120px;
+    right: 30px;
+    width: 95px;
+    z-index: 9998;                    /* Debajo del botón de Instagram */
+    opacity: 0.88;
+    transition: all 0.4s ease;
+    filter: drop-shadow(0 10px 25px rgba(0,0,0,0.18));
+}
+
+.logo-flotante-brand a {
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid rgba(13, 126, 62, 0.7);
+    background: white;
+}
+
+.logo-flotante-brand img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.logo-flotante-brand:hover {
+    opacity: 1;
+    transform: scale(1.12) rotate(3deg);
+}
+
+.logo-flotante-brand:hover img {
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .logo-flotante-brand {
+        width: 75px;
+        top: 100px;
+        right: 20px;
+    }
+}
+
