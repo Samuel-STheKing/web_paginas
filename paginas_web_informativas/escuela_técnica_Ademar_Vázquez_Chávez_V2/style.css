@@ -1,27 +1,25 @@
 /* =========================================================
    E.T. "Ademar Vásquez Chávez" — sitio institucional
-   Tokens derivados del escudo: verde, blanco y rojo,
-   papel color hueso y una "banda" tricolor como firma visual.
+   Paleta educativa: azul académico, ámbar dorado y blanco.
    ========================================================= */
 
 :root{
-  --verde:        #1C5E3C;
-  --verde-oscuro: #0F3A25;
-  --rojo:         #B32B2E;
-  --rojo-oscuro:  #7E1D20;
-  --dorado:       #C6902B;
-  --crema:        #F7F3EA;
-  --crema-alt:    #EFE9DA;
-  --carbon:       #211F1B;
-  --carbon-suave: #55524A;
-  --linea:        #E1D9C4;
+  --azul:         #1A4F99;
+  --azul-oscuro:  #0D2D6B;
+  --ambar:        #C97D10;
+  --ambar-claro:  #F5C030;
+  --fondo:        #F5F7FC;
+  --fondo-alt:    #EBF0F9;
+  --carbon:       #1A2232;
+  --carbon-suave: #4A5568;
+  --linea:        #CDD8EF;
   --blanco:       #FFFFFF;
 
   --display: "Fraunces", Georgia, serif;
   --texto:   "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   --radio: 4px;
-  --sombra: 0 18px 40px -20px rgba(15, 58, 37, 0.35);
+  --sombra: 0 18px 40px -20px rgba(13, 45, 107, 0.28);
 }
 
 *{ box-sizing: border-box; }
@@ -36,7 +34,7 @@ body{
   margin:0;
   font-family: var(--texto);
   color: var(--carbon);
-  background: var(--crema);
+  background: var(--fondo);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -50,7 +48,7 @@ a{ color: inherit; text-decoration: none; }
 }
 
 :focus-visible{
-  outline: 2.5px solid var(--dorado);
+  outline: 2.5px solid var(--ambar);
   outline-offset: 3px;
 }
 
@@ -61,14 +59,14 @@ a{ color: inherit; text-decoration: none; }
 }
 .progress-fill{
   height:100%; width:0%;
-  background: linear-gradient(90deg, var(--verde), var(--dorado), var(--rojo));
+  background: linear-gradient(90deg, var(--azul), var(--ambar-claro), var(--azul-oscuro));
   transition: width .08s linear;
 }
 
 /* ---------- Header ---------- */
 .site-header{
   position: sticky; top:0; z-index: 900;
-  background: rgba(247,243,234,0.9);
+  background: rgba(245,247,252,0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--linea);
 }
@@ -83,7 +81,7 @@ a{ color: inherit; text-decoration: none; }
   font-family: var(--display);
   font-size: 1.02rem;
   font-weight: 600;
-  color: var(--verde-oscuro);
+  color: var(--azul-oscuro);
   letter-spacing:.01em;
 }
 .brand-text em{
@@ -105,24 +103,24 @@ a{ color: inherit; text-decoration: none; }
 }
 .site-nav a::after{
   content:""; position:absolute; left:0; right:0; bottom:-2px; height:2px;
-  background: var(--rojo); transform: scaleX(0); transform-origin:left;
+  background: var(--ambar); transform: scaleX(0); transform-origin:left;
   transition: transform .25s ease;
 }
 .site-nav a:hover::after{ transform: scaleX(1); }
 .nav-ig{
-  background: var(--verde);
+  background: var(--azul);
   color: var(--blanco) !important;
   padding: 8px 16px !important;
   border-radius: 999px;
 }
 .nav-ig::after{ display:none; }
-.nav-ig:hover{ background: var(--verde-oscuro); }
+.nav-ig:hover{ background: var(--azul-oscuro); }
 
 .nav-toggle{
   display:none; flex-direction:column; justify-content:center; gap:5px;
   width:38px; height:38px; background:none; border:none; cursor:pointer;
 }
-.nav-toggle span{ display:block; height:2px; background: var(--verde-oscuro); border-radius:2px; }
+.nav-toggle span{ display:block; height:2px; background: var(--azul-oscuro); border-radius:2px; }
 
 /* ---------- Buttons ---------- */
 .btn{
@@ -134,17 +132,17 @@ a{ color: inherit; text-decoration: none; }
   cursor:pointer;
 }
 .btn-primary{
-  background: var(--rojo); color: var(--blanco);
+  background: var(--azul); color: var(--blanco);
   box-shadow: var(--sombra);
   transition: transform .2s ease, background .2s ease;
 }
-.btn-primary:hover{ background: var(--rojo-oscuro); transform: translateY(-2px); }
+.btn-primary:hover{ background: var(--azul-oscuro); transform: translateY(-2px); }
 .btn-ghost{
-  border-color: var(--verde);
-  color: var(--verde-oscuro);
+  border-color: var(--azul);
+  color: var(--azul-oscuro);
   transition: background .2s ease, color .2s ease;
 }
-.btn-ghost:hover{ background: var(--verde); color: var(--blanco); }
+.btn-ghost:hover{ background: var(--azul); color: var(--blanco); }
 .btn-on-dark{ box-shadow:none; }
 
 /* ---------- Eyebrow / titles ---------- */
@@ -154,20 +152,20 @@ a{ color: inherit; text-decoration: none; }
   font-weight:700;
   letter-spacing:.22em;
   text-transform:uppercase;
-  color: var(--dorado);
+  color: var(--ambar);
   margin: 0 0 14px;
 }
-.eyebrow-dark{ color: var(--rojo); }
+.eyebrow-dark{ color: var(--azul); }
 
 .section-title{
   font-family: var(--display);
   font-size: clamp(1.8rem, 3.4vw, 2.6rem);
   font-weight:600;
-  color: var(--verde-oscuro);
+  color: var(--azul-oscuro);
   margin: 0 0 12px;
   letter-spacing:-.01em;
 }
-.section-title-light{ color: var(--crema); }
+.section-title-light{ color: var(--fondo); }
 .section-lede{
   max-width: 560px;
   color: var(--carbon-suave);
@@ -182,8 +180,8 @@ a{ color: inherit; text-decoration: none; }
   padding: 76px 0 0;
   overflow:hidden;
   background:
-    radial-gradient(circle at 85% 12%, rgba(28,94,60,0.08), transparent 55%),
-    var(--crema);
+    radial-gradient(circle at 85% 12%, rgba(26,79,153,0.07), transparent 55%),
+    var(--fondo);
 }
 .hero-inner{
   display:grid;
@@ -201,7 +199,7 @@ a{ color: inherit; text-decoration: none; }
   margin: 0 0 22px;
   letter-spacing:-.015em;
 }
-.hero-copy h1 span{ color: var(--verde); font-style: italic; }
+.hero-copy h1 span{ color: var(--azul); font-style: italic; }
 .hero-lede{
   font-size: 1.08rem;
   line-height:1.65;
@@ -222,7 +220,7 @@ a{ color: inherit; text-decoration: none; }
   box-shadow: var(--sombra);
   padding:10px;
   z-index:2;
-  border: 3px solid var(--crema);
+  border: 3px solid var(--fondo);
 }
 .hero-photo{
   margin:0; border-radius: var(--radio);
@@ -232,8 +230,8 @@ a{ color: inherit; text-decoration: none; }
 }
 .hero-photo img{ width:100%; height: 420px; object-fit:cover; }
 .hero-photo figcaption{
-  background: var(--verde-oscuro);
-  color: var(--crema);
+  background: var(--azul-oscuro);
+  color: var(--fondo);
   font-size:.78rem;
   letter-spacing:.03em;
   padding: 12px 18px;
@@ -243,14 +241,14 @@ a{ color: inherit; text-decoration: none; }
   height: 14px;
   width:100%;
   background: linear-gradient(90deg,
-    var(--verde) 0 33%,
-    var(--blanco) 33% 66%,
-    var(--rojo) 66% 100%);
+    var(--azul-oscuro) 0 33%,
+    var(--ambar-claro) 33% 66%,
+    var(--azul) 66% 100%);
 }
 .banda-thin{ height:8px; }
 
 /* ---------- Menciones ---------- */
-.menciones{ padding: 88px 0 96px; background: var(--crema); }
+.menciones{ padding: 88px 0 96px; background: var(--fondo); }
 .menciones-grid{
   display:grid;
   grid-template-columns: repeat(5, 1fr);
@@ -266,14 +264,14 @@ a{ color: inherit; text-decoration: none; }
 .mencion-card:hover{
   transform: translateY(-6px);
   box-shadow: var(--sombra);
-  border-color: var(--verde);
+  border-color: var(--azul);
 }
 .mencion-icon{
   display:inline-flex; align-items:center; justify-content:center;
   width:52px; height:52px;
   border-radius:50%;
-  background: var(--crema-alt);
-  color: var(--verde);
+  background: var(--fondo-alt);
+  color: var(--azul);
   margin-bottom:18px;
 }
 .mencion-card h3{
@@ -291,7 +289,7 @@ a{ color: inherit; text-decoration: none; }
 }
 
 /* ---------- Vida estudiantil / galería ---------- */
-.vida{ padding: 20px 0 100px; background: var(--crema); }
+.vida{ padding: 20px 0 100px; background: var(--fondo); }
 .gallery{
   display:grid;
   grid-template-columns: repeat(4, 1fr);
@@ -315,13 +313,13 @@ a{ color: inherit; text-decoration: none; }
   font-size:.74rem;
   letter-spacing:.01em;
   color: var(--blanco);
-  background: linear-gradient(0deg, rgba(15,25,18,0.82), rgba(15,25,18,0));
+  background: linear-gradient(0deg, rgba(13,45,107,0.82), rgba(13,45,107,0));
 }
 .g-tall{ grid-row: span 2; }
 .g-wide{ grid-column: span 2; }
 
 /* ---------- Nosotros ---------- */
-.nosotros{ background: var(--crema-alt); padding: 0 0 96px; }
+.nosotros{ background: var(--fondo-alt); padding: 0 0 96px; }
 .nosotros-inner{
   display:grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -335,7 +333,7 @@ a{ color: inherit; text-decoration: none; }
   line-height:1.55;
   color: var(--carbon-suave);
   padding-left: 22px;
-  border-left: 3px solid var(--verde);
+  border-left: 3px solid var(--azul);
 }
 .crest-list strong{ color: var(--carbon); font-family: var(--display); font-weight:600; }
 .nosotros-crest{ display:flex; justify-content:center; }
@@ -343,15 +341,15 @@ a{ color: inherit; text-decoration: none; }
 
 /* ---------- Ubicación ---------- */
 .ubicacion{
-  background: var(--verde-oscuro);
-  color: var(--crema);
+  background: var(--azul-oscuro);
+  color: var(--fondo);
   padding: 90px 0;
 }
 .ubicacion-inner{ max-width: 620px; }
 .contact-list{ margin: 0 0 40px; display:flex; flex-direction:column; gap:18px; }
 .contact-list dt{
   font-size:.72rem; text-transform:uppercase; letter-spacing:.14em;
-  color: var(--dorado); margin-bottom:4px;
+  color: var(--ambar-claro); margin-bottom:4px;
 }
 .contact-list dd{ margin:0; font-size:1.06rem; }
 .contact-list a{ text-decoration: underline; text-underline-offset:3px; }
@@ -359,13 +357,13 @@ a{ color: inherit; text-decoration: none; }
 /* ---------- Footer ---------- */
 .site-footer{
   background: var(--carbon);
-  color: rgba(247,243,234,0.72);
+  color: rgba(245,247,252,0.72);
   padding: 46px 0;
   text-align:center;
 }
 .footer-crest{ width:52px; height:52px; margin: 0 auto 16px; }
 .footer-inner p{ margin: 4px 0; font-size:.9rem; }
-.footer-fine{ font-size:.76rem !important; letter-spacing:.02em; color: rgba(247,243,234,0.48); }
+.footer-fine{ font-size:.76rem !important; letter-spacing:.02em; color: rgba(245,247,252,0.48); }
 
 /* =========================================================
    Responsive
@@ -381,7 +379,7 @@ a{ color: inherit; text-decoration: none; }
   .nav-toggle{ display:flex; }
   .site-nav{
     position:absolute; top:100%; left:0; right:0;
-    background: var(--crema);
+    background: var(--fondo);
     border-bottom: 1px solid var(--linea);
     flex-direction:column; align-items:flex-start;
     padding: 20px 28px 28px;
