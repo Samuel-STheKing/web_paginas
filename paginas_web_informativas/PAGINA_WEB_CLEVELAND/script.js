@@ -1,27 +1,54 @@
-// Botón "Volver arriba" flotante
-document.addEventListener('DOMContentLoaded', function () {
-    const backToTopBtn = document.getElementById('backToTop');
+document.addEventListener("DOMContentLoaded", () => {
+    // Definimos la raíz real de tu proyecto en Apache de forma directa
+    const basePath = "/PAGINA_WEB_CLEVELAND/";
 
-    if (backToTopBtn) {
-        // Muestra u oculta el botón según la posición del scroll
-        function toggleBackToTop() {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('show');
-            } else {
-                backToTopBtn.classList.remove('show');
-            }
-        }
+    // Cargar Navbar de forma dinámica
+    const mainNav = document.querySelector(".main-nav");
+    if (mainNav) {
+        fetch(`${basePath}components/nav.html`)
+            .then(response => {
+                if (!response.ok) throw new Error('No se pudo encontrar nav.html');
+                return response.text();
+            })
+            .then(data => {
+                mainNav.innerHTML = data;
+                
+                // Ajustamos las rutas de los enlaces y la imagen del Logo dentro del Nav
+                mainNav.querySelectorAll("a, img").forEach(el => {
+                    const attr = el.tagName === "IMG" ? "src" : "href";
+                    const val = el.getAttribute(attr);
+                    // Si la ruta empieza con '/' y no tiene ya la raíz, se la agregamos
+                    if (val && val.startsWith("/") && !val.startsWith(basePath)) {
+                        el.setAttribute(attr, basePath + val.substring(1));
+                    }
+                });
+            })
+            .catch(error => console.error("Error cargando el menú:", error));
+    }
 
-        // Revisa el estado inicial (por si la página carga ya con scroll)
-        toggleBackToTop();
+    // Cargar Footer de forma dinámica
+    const siteFooter = document.querySelector(".site-footer");
+    if (siteFooter) {
+        fetch(`${basePath}components/footer.html`)
+            .then(response => {
+                if (!response.ok) throw new Error('No se pudo encontrar footer.html');
+                return response.text();
+            })
+            .then(data => {
+                siteFooter.innerHTML = data;
 
-        window.addEventListener('scroll', toggleBackToTop);
+                // Ajustamos también las rutas de los enlaces dentro del Footer
+                siteFooter.querySelectorAll("a").forEach(el => {
+                    const href = el.getAttribute("href");
+                    if (href && href.startsWith("/") && !href.startsWith(basePath)) {
+                        el.setAttribute(href, basePath + href.substring(1));
+                    }
+                });
 
-        backToTopBtn.addEventListener('click', function () {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+                if (typeof initBackToTop === 'function') {
+                    initBackToTop();
+                }
+            })
+            .catch(error => console.error("Error cargando el footer:", error));
     }
 });
