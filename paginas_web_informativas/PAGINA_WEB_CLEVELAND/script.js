@@ -1,8 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Definimos la raíz real de tu proyecto en Apache de forma directa
-    const basePath = "/PAGINA_WEB_CLEVELAND/";
+    // Usamos rutas relativas (sin basePath fijo)
+    const getBasePath = () => {
+        const path = window.location.pathname;
+        // Si estamos en /feedbacks/docs/cleveland/
+        if (path.includes('/PAGINA_WEB_CLEVELAND/')) {
+            const parts = path.split('/PAGINA_WEB_CLEVELAND/');
+            return parts[0] + '/PAGINA_WEB_CLEVELAND/';
+        }
+        return '/PAGINA_WEB_CLEVELAND/';
+    };
 
-    // Cargar Navbar de forma dinámica
+    const basePath = getBasePath();
+
+    // Cargar Navbar
     const mainNav = document.querySelector(".main-nav");
     if (mainNav) {
         fetch(`${basePath}components/nav.html`)
@@ -17,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 mainNav.querySelectorAll("a, img").forEach(el => {
                     const attr = el.tagName === "IMG" ? "src" : "href";
                     const val = el.getAttribute(attr);
-                    // Si la ruta empieza con '/' y no tiene ya la raíz, se la agregamos
                     if (val && val.startsWith("/") && !val.startsWith(basePath)) {
                         el.setAttribute(attr, basePath + val.substring(1));
                     }
@@ -26,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch(error => console.error("Error cargando el menú:", error));
     }
 
-    // Cargar Footer de forma dinámica
+    // Cargar Footer
     const siteFooter = document.querySelector(".site-footer");
     if (siteFooter) {
         fetch(`${basePath}components/footer.html`)
@@ -37,11 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(data => {
                 siteFooter.innerHTML = data;
 
-                // Ajustamos también las rutas de los enlaces dentro del Footer
                 siteFooter.querySelectorAll("a").forEach(el => {
                     const href = el.getAttribute("href");
                     if (href && href.startsWith("/") && !href.startsWith(basePath)) {
-                        el.setAttribute(href, basePath + href.substring(1));
+                        el.setAttribute("href", basePath + href.substring(1));
                     }
                 });
 
