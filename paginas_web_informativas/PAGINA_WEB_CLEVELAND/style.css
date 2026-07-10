@@ -16,7 +16,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(59, 59, 59, 0.85); /* CAMBIADO: Color #3B3B3B con opacidad */
+    background: rgba(59, 59, 59, 0.516); /* CAMBIADO: Color #3B3B3B con opacidad */
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(181, 211, 37, 0.3);
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
@@ -646,7 +646,7 @@ body {
    FOOTER
    ========================================================================== */
 .site-footer {
-    background-color: #3B3B3B; /* Mismo tono que el nav */
+    background-color: #232222; /* Mismo tono que el nav */
     color: #ffffff;
     font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
     padding-top: 70px;

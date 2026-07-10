@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SECCIÓN DE CURSOS - CON IMAGEN DE FONDO INMERSIVA Y PANEL ELÁSTICO
+   SECCIÓN DE CURSOS - UNIFICADA
    ========================================================================== */
 
 .main-cursos-content {
@@ -8,12 +8,10 @@
     display: block;
     clear: both;
     box-sizing: border-box;
-    
-    /* Configuración de la imagen de fondo con overlay oscuro para contraste */
     background: linear-gradient(rgba(248, 249, 250, 0.88), rgba(248, 249, 250, 0.94)), 
                 url('../img/Banner-2-1-1024x717.png') no-repeat center center;
     background-size: cover;
-    background-attachment: fixed; /* Mantiene el fondo estático de forma elegante al hacer scroll */
+    background-attachment: fixed;
 }
 
 .section-title {
@@ -27,7 +25,6 @@
     text-transform: uppercase;
 }
 
-/* Contenedor Grid general de Cursos */
 .courses-grid {
     max-width: 1200px;
     margin: 0 auto;
@@ -41,7 +38,6 @@
    SISTEMA DE DESPLAZAMIENTO VERTICAL (SLIDING REVEAL AUTOMÁTICO)
    ========================================================================== */
 
-/* Envoltura con capacidad de foco interactivo */
 .course-card-wrapper {
     width: 100%;
     display: flex;
@@ -50,48 +46,43 @@
     outline: none;
 }
 
-/* Contenedor principal que gestiona el espacio de ambos bloques verticalmente */
 .card-sliding-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0px;
     width: 100%;
-    max-width: 850px; /* Conserva la amplitud original perfecta */
+    max-width: 850px;
     transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* MODIFICACIÓN DE ESQUINAS Y PROMPT AL ENFOCAR O PASAR CURSOR */
 .course-card-wrapper:hover #prompt,
 .course-card-wrapper:focus-within #prompt {
     opacity: 0 !important;
 }
 
-/* Redondeado adaptativo inferior cuando se acopla al panel de abajo */
 .course-card-wrapper:hover #card,
 .course-card-wrapper:focus-within #card {
     border-radius: 20px 20px 0 0;
 }
 
-/* Estilos para el enlace del botón 'Más Información' */
 .card-btn-link {
     text-decoration: none;
     display: inline-block;
 }
 
 /* ==========================================================================
-   CONTENEDOR CON PERSPECTIVA 3D (TARJETA SUPERIOR)
+   CONTENEDOR CON PERSPECTIVA 3D
    ========================================================================== */
 .container-3d-card {
     position: relative;
     width: 100%;
-    max-width: 850px; /* Tamaño original intocable */
+    max-width: 850px;
     height: 520px;
     transform-style: preserve-3d;
     z-index: 2;
 }
 
-/* Cuerpo Principal de la Tarjeta */
 #card {
     position: absolute;
     top: 0;
@@ -110,7 +101,6 @@
     align-items: center;
 }
 
-/* Capa de Imagen de Fondo Interna de la Tarjeta */
 .card-bg-image {
     position: absolute;
     top: 0;
@@ -123,7 +113,6 @@
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Contenedor de Textos e Interfaz interna */
 .card-content-wrapper {
     position: relative;
     z-index: 2;
@@ -137,7 +126,6 @@
     align-items: center;
 }
 
-/* Estructura Superior: Título y Badges */
 .book-header {
     text-align: center;
     display: flex;
@@ -179,7 +167,6 @@
     letter-spacing: 1px;
 }
 
-/* Párrafo Descriptivo */
 .course-description {
     font-size: 0.98rem;
     color: rgba(255, 255, 255, 0.9);
@@ -192,7 +179,6 @@
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* Alineación Inferior del Botón */
 .book-footer {
     width: 100%;
     display: flex;
@@ -200,7 +186,6 @@
     margin-top: 5px;
 }
 
-/* Botón de Acción Principal */
 .card-btn {
     background-color: #B5D325;
     color: #1a2414;
@@ -223,7 +208,6 @@
     box-shadow: 0 8px 25px rgba(181, 211, 37, 0.5);
 }
 
-/* Texto de Sugerencia Inferior Estilo Prompt */
 #prompt {
     bottom: 25px;
     text-align: center;
@@ -240,37 +224,53 @@
 }
 
 /* ==========================================================================
-   PANEL INFERIOR AMPLIO (REVELACIÓN DE CONTENIDO AUTOMÁTICO)
+   PANEL INFERIOR AMPLIO - CORREGIDO
    ========================================================================== */
 .info-reveal-panel {
     width: 100%;
-    height: 0;
+    max-height: 0;
     opacity: 0;
     overflow: hidden;
     visibility: hidden;
-    background: #1E231E; /* Mismo fondo oscuro de la tarjeta */
-    border-radius: 0 0 20px 20px; /* Acople perfecto abajo */
+    background: #1E231E;
+    border-radius: 0 0 20px 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-top: none; 
+    border-top: none;
     padding: 0 45px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    transition: height 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
-                opacity 0.4s ease, 
-                padding 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    justify-content: flex-start;
+    transition: max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+                opacity 0.5s ease 0.1s,
+                padding 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+                visibility 0.5s ease 0.1s;
     box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
-/* EN DESPLIEGUE: SE MUESTRA AUTOMÁTICAMENTE AL HOVER O FOCO SIN QUITAR ANCHO */
 .course-card-wrapper:hover .info-reveal-panel,
 .course-card-wrapper:focus-within .info-reveal-panel {
-    height: 340px; /* Altura ideal súper holgada y legible */
+    max-height: 800px; /* Altura suficiente para todo el contenido */
     opacity: 1;
     visibility: visible;
     padding: 35px 45px 45px 45px;
+    overflow-y: auto; /* Scroll si es necesario */
+}
+
+/* Scroll personalizado para el panel */
+.info-reveal-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.info-reveal-panel::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.info-reveal-panel::-webkit-scrollbar-thumb {
+    background: #B5D325;
+    border-radius: 3px;
 }
 
 .reveal-title {
@@ -282,17 +282,18 @@
     line-height: 1.4;
     border-bottom: 2px solid rgba(181, 211, 37, 0.2);
     padding-bottom: 12px;
+    flex-shrink: 0;
 }
 
 .reveal-benefits-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Divide los logros en 3 columnas amplias */
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
 .benefit-item {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: flex-start;
     gap: 12px;
 }
@@ -306,6 +307,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .benefit-icon svg {
@@ -317,7 +319,7 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 0.93rem;
     color: rgba(255, 255, 255, 0.88);
-    line-height: 1.6;
+    line-height: 1.7;
     margin: 0;
     text-align: left;
 }
@@ -381,7 +383,6 @@
 .tr-24:hover ~ #card { transform: rotateX(-10deg) rotateY(7deg); }
 .tr-25:hover ~ #card { transform: rotateX(-10deg) rotateY(14deg); }
 
-/* Posicionamiento de rejilla (5x5) */
 .tr-1, .tr-2, .tr-3, .tr-4, .tr-5 { top: 0%; }
 .tr-6, .tr-7, .tr-8, .tr-9, .tr-10 { top: 20%; }
 .tr-11, .tr-12, .tr-13, .tr-14, .tr-15 { top: 40%; }
@@ -395,26 +396,24 @@
 .tr-5, .tr-10, .tr-15, .tr-20, .tr-25 { left: 80%; }
 
 /* ==========================================================================
-   ADAPTABILIDAD RESPONSIVA (MEDIA QUERIES)
+   ADAPTABILIDAD RESPONSIVA
    ========================================================================== */
 
-/* Ajustes para pantallas medianas o portátiles */
 @media (max-width: 992px) {
     .course-card-wrapper:hover .info-reveal-panel,
     .course-card-wrapper:focus-within .info-reveal-panel {
-        height: auto;
-        min-height: 400px;
+        max-height: 900px;
+        padding: 30px 30px 40px 30px;
     }
     .reveal-benefits-list {
-        grid-template-columns: 1fr; /* Pasa a lista vertical en dispositivos compactos */
-        gap: 20px;
+        grid-template-columns: 1fr;
+        gap: 25px;
     }
     .benefit-item {
-        flex-direction: row; /* Posiciona el icono al lado del texto */
+        flex-direction: row;
     }
 }
 
-/* Teléfonos móviles */
 @media (max-width: 768px) {
     .main-cursos-content {
         padding: 60px 15px;
@@ -433,8 +432,42 @@
         font-size: 0.92rem;
         text-align: left;
     }
-    /* Remoción de trackers en smartphones para facilitar el scroll táctil */
     .tracker { 
         display: none; 
+    }
+    
+    .course-card-wrapper:hover .info-reveal-panel,
+    .course-card-wrapper:focus-within .info-reveal-panel {
+        max-height: 1000px;
+        padding: 25px 20px 30px 20px;
+    }
+    
+    .reveal-title {
+        font-size: 1.2rem;
+    }
+    
+    .benefit-item p {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .course-card-wrapper:hover .info-reveal-panel,
+    .course-card-wrapper:focus-within .info-reveal-panel {
+        max-height: 1100px;
+        padding: 20px 15px 25px 15px;
+    }
+    
+    .reveal-benefits-list {
+        gap: 18px;
+    }
+    
+    .benefit-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .benefit-item p {
+        font-size: 0.82rem;
     }
 }
